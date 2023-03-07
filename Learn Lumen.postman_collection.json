@@ -555,6 +555,74 @@
 					"body": "{\n    \"msg\": \"Confirmed\"\n}"
 				}
 			]
+		},
+		{
+			"name": "Send Email",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Send Email - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/penjualan/3/send-email?api_key=abyan123",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"penjualan",
+								"3",
+								"send-email"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "abyan123"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 02:14:16 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 02:14:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Email Success\"\n}"
+				}
+			]
 		}
 	]
 }
