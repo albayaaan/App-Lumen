@@ -14,6 +14,8 @@
 */
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
@@ -58,6 +60,26 @@ $router->group(['prefix' => 'penjualan'], function () use ($router) {
     $router->delete('/{id}', function ($id) {
         return response()->json([
             "msg" => "Success deleted",
+        ]);
+    });
+    $router->get('/{id}/confirm', ['middleware' => 'auth', function (Request $request, $id) {
+        $user = $request->user();
+
+        Log::debug($user);
+        if ($user == null) {
+            return response()->json(['error' => 'Unauthorized'], 401, ['X-Header-One' => 'Header Value']);
+        }
+        return response()->json([
+            "msg" => "Confirmed",
+        ]);
+    }]);
+    $router->get('/{id}/send-email', function (Request $request, $id) {
+        $user = $request->user();
+        Mail::raw('This is the email body', function ($message) {
+            $message->to('albayaaan.z@gmail.com')->subject('Lumen email test');
+        });
+        return response()->json([
+            "msg" => "Email Success",
         ]);
     });
 });
